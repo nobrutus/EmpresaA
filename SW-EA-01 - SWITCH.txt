@@ -1,0 +1,61 @@
+SW-EA-01 - SWITCH
+
+en
+conf t
+hostname SW-EA-01
+enable password senai 132
+
+vlan 10
+name KLAUS
+int range fa0/1-2
+sw mo acc
+sw access vlan 10
+
+vlan 20
+name ISH
+int range fa0/3-4
+sw mo acc
+sw access vlan 20
+
+vlan 30
+name SPACENEEDLE
+int range fa0/5-6
+sw mo acc
+sw access vlan 30
+
+vlan 40
+name AGILITY
+int range fa0/7-8
+sw mo acc
+sw access vlan 40
+
+vlan 50
+name BLOCKTIME
+int range fa0/9-10
+sw mo acc
+sw access vlan 50
+
+vlan 60
+name VOIP
+int range fa0/11-12
+sw mo acc
+sw access vlan 60
+
+vlan 70
+name CAMERA
+int range fa0/13-14
+sw mo acc
+sw access vlan 70
+
+vlan 80
+name NAS
+int range fa0/15-16
+sw mo acc
+sw access vlan 80
+
+int g0/1
+sw mode trunk
+sw trunk all vlan 10,20,30,40,50,60,70,80
+exit
+
+do wr

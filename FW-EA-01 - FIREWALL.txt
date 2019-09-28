@@ -1,0 +1,24 @@
+FW-EA-01 - FIREWALL
+
+en 
+conf t
+hostname FW-EA-01
+en pass senai132
+vlan 1
+nameif inside
+security-level 100
+ip add 10.20.30.49 255.255.255.248
+exit
+vlan 2
+nameif outside
+security-level 0
+ip add 0.0.0.0 0.0.0.0 200.200.200.1
+object network NAT-LAN
+subnet 10.20.30.0 255.255.255.0
+nat (inside,outside) dynamic interface
+exit
+access-list ENTRADA extended permit icmp any any
+access-list ENTRADA extended permit tcp any eq www any
+access-group ENTRADA in int outside
+exit 
+wr
